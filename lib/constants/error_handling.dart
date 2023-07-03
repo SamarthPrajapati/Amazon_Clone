@@ -11,7 +11,7 @@ void httpErrorHandle({
 }) {
   switch (response.statusCode) {
     case 200:
-      onSuccess;
+      onSuccess();
       break;
     case 400:
       showSnachBar(context, jsonDecode(response.body)['msg']);
@@ -21,6 +21,5 @@ void httpErrorHandle({
       break;
     default:
       showSnachBar(context, response.body);
-      break;
   }
 }
