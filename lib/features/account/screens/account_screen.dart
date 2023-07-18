@@ -5,7 +5,7 @@ import 'package:amazon_clone/features/account/widgets/top_buttons.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {
-  const AccountScreen({super.key});
+  const AccountScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,9 @@ class AccountScreen extends StatelessWidget {
         preferredSize: const Size.fromHeight(50),
         child: AppBar(
           flexibleSpace: Container(
-            decoration: BoxDecoration(gradient: GlobalVariables.appBarGradient),
+            decoration: const BoxDecoration(
+              gradient: GlobalVariables.appBarGradient,
+            ),
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,20 +31,19 @@ class AccountScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.only(
-                  left: 15,
-                  right: 15,
-                ),
+                padding: const EdgeInsets.only(left: 15, right: 15),
                 child: Row(
                   children: const [
                     Padding(
                       padding: EdgeInsets.only(right: 15),
                       child: Icon(Icons.notifications_outlined),
                     ),
-                    Icon(Icons.search),
+                    Icon(
+                      Icons.search,
+                    ),
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),

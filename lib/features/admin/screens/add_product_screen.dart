@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 class AddProductScreen extends StatefulWidget {
   static const String routeName = '/add-product';
-  const AddProductScreen({super.key});
+  const AddProductScreen({Key? key}) : super(key: key);
 
   @override
   State<AddProductScreen> createState() => _AddProductScreenState();
@@ -30,7 +30,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     productNameController.dispose();
     descriptionController.dispose();
@@ -43,7 +42,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
     'Essentials',
     'Appliances',
     'Books',
-    'Fashion',
+    'Fashion'
   ];
 
   void sellProduct() {
@@ -74,7 +73,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
         preferredSize: const Size.fromHeight(50),
         child: AppBar(
           flexibleSpace: Container(
-            decoration: BoxDecoration(gradient: GlobalVariables.appBarGradient),
+            decoration: const BoxDecoration(
+              gradient: GlobalVariables.appBarGradient,
+            ),
           ),
           title: const Text(
             'Add Product',
@@ -114,8 +115,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
                         onTap: selectImages,
                         child: DottedBorder(
                           borderType: BorderType.RRect,
-                          dashPattern: const [10, 4],
                           radius: const Radius.circular(10),
+                          dashPattern: const [10, 4],
                           strokeCap: StrokeCap.round,
                           child: Container(
                             width: double.infinity,
@@ -130,11 +131,9 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                   Icons.folder_open,
                                   size: 40,
                                 ),
-                                const SizedBox(
-                                  height: 15,
-                                ),
+                                const SizedBox(height: 15),
                                 Text(
-                                  'Select Product Image',
+                                  'Select Product Images',
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: Colors.grey.shade400,
@@ -145,58 +144,47 @@ class _AddProductScreenState extends State<AddProductScreen> {
                           ),
                         ),
                       ),
-                const SizedBox(
-                  height: 30,
-                ),
+                const SizedBox(height: 30),
                 CustomTextField(
                   controller: productNameController,
                   hintText: 'Product Name',
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 CustomTextField(
                   controller: descriptionController,
                   hintText: 'Description',
                   maxLines: 7,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 CustomTextField(
                   controller: priceController,
                   hintText: 'Price',
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 CustomTextField(
                   controller: quantityController,
                   hintText: 'Quantity',
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 SizedBox(
                   width: double.infinity,
                   child: DropdownButton(
-                      value: category,
-                      icon: const Icon(Icons.keyboard_arrow_down),
-                      items: productCategories.map((String item) {
-                        return DropdownMenuItem(
-                          value: item,
-                          child: Text(item),
-                        );
-                      }).toList(),
-                      onChanged: (String? newVal) {
-                        setState(() {
-                          category = newVal!;
-                        });
-                      }),
+                    value: category,
+                    icon: const Icon(Icons.keyboard_arrow_down),
+                    items: productCategories.map((String item) {
+                      return DropdownMenuItem(
+                        value: item,
+                        child: Text(item),
+                      );
+                    }).toList(),
+                    onChanged: (String? newVal) {
+                      setState(() {
+                        category = newVal!;
+                      });
+                    },
+                  ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 CustomButton(
                   text: 'Sell',
                   onTap: sellProduct,

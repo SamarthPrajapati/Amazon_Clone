@@ -1,11 +1,11 @@
 import 'package:amazon_clone/constants/global_variables.dart';
-import 'package:amazon_clone/features/account/screens/account_screen.dart';
+import 'package:amazon_clone/features/admin/screens/analtyics_screen.dart';
+import 'package:amazon_clone/features/admin/screens/orders_screen.dart';
 import 'package:amazon_clone/features/admin/screens/posts_screen.dart';
-import 'package:amazon_clone/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class AdminScreen extends StatefulWidget {
-  const AdminScreen({super.key});
+  const AdminScreen({Key? key}) : super(key: key);
 
   @override
   State<AdminScreen> createState() => _AdminScreenState();
@@ -18,12 +18,8 @@ class _AdminScreenState extends State<AdminScreen> {
 
   List<Widget> pages = [
     const PostsScreen(),
-    const Center(
-      child: Text('Analytics Page'),
-    ),
-    const Center(
-      child: Text('Cart Page'),
-    ),
+    const AnalyticsScreen(),
+    const OrdersScreen(),
   ];
 
   void updatePage(int page) {
@@ -39,7 +35,9 @@ class _AdminScreenState extends State<AdminScreen> {
         preferredSize: const Size.fromHeight(50),
         child: AppBar(
           flexibleSpace: Container(
-            decoration: BoxDecoration(gradient: GlobalVariables.appBarGradient),
+            decoration: const BoxDecoration(
+              gradient: GlobalVariables.appBarGradient,
+            ),
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,8 +54,8 @@ class _AdminScreenState extends State<AdminScreen> {
               const Text(
                 'Admin',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
                   color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 ),
               )
             ],
@@ -73,6 +71,7 @@ class _AdminScreenState extends State<AdminScreen> {
         iconSize: 28,
         onTap: updatePage,
         items: [
+          // POSTS
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
@@ -86,10 +85,13 @@ class _AdminScreenState extends State<AdminScreen> {
                   ),
                 ),
               ),
-              child: const Icon(Icons.home_outlined),
+              child: const Icon(
+                Icons.home_outlined,
+              ),
             ),
             label: '',
           ),
+          // ANALYTICS
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
@@ -103,10 +105,13 @@ class _AdminScreenState extends State<AdminScreen> {
                   ),
                 ),
               ),
-              child: const Icon(Icons.analytics_outlined),
+              child: const Icon(
+                Icons.analytics_outlined,
+              ),
             ),
             label: '',
           ),
+          // ORDERS
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
@@ -120,7 +125,9 @@ class _AdminScreenState extends State<AdminScreen> {
                   ),
                 ),
               ),
-              child: const Icon(Icons.all_inbox_outlined),
+              child: const Icon(
+                Icons.all_inbox_outlined,
+              ),
             ),
             label: '',
           ),
